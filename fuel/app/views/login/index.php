@@ -10,16 +10,15 @@
 </head>
 <body>
     
+    <!--ユーザ登録成功フラッシュメッセージ -->
     <?php if (Session::get_flash('success')): ?>
         <div class="success" style="color:green;">
             <p><?= Session::get_flash('success') ?></p>
         </div>
     <?php endif; ?>
 
-
     <h1>ログイン</h1>
     
-
     <form action="auth" method="post">
         <label for="username">ユーザー名:</label>
         <input type="text" id="username" name="username" required>
@@ -30,6 +29,5 @@
         <button type="submit">ログイン</button>
     </form>
 
-    
 </body>
 </html>

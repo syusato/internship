@@ -4,7 +4,7 @@ namespace Model;
 class Users extends \Model
 {
    
-        // ユーザー情報取得
+    // ユーザー情報取得
     public static function select($id)
     {
         $result = \DB::select('*')

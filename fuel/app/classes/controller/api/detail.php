@@ -4,6 +4,7 @@ use Model\Articles;
 
 class Controller_Api_Detail extends Controller_Rest
 {
+    //削除ボタン用API
     public function delete_delete($id)
     {
         $success = Articles::delete($id);
@@ -15,6 +16,7 @@ class Controller_Api_Detail extends Controller_Rest
         }
     }
 
+    //最終閲覧日更新ボタン用API
     public function post_track_click($id)
     {
         $now = Date::forge()->format('%Y-%m-%d %H:%M:%S');
@@ -27,8 +29,7 @@ class Controller_Api_Detail extends Controller_Rest
         return $this->response(['status' => 'ok']);
     }
 
-    // Controller_Api_Detail.php
-
+    //コメント更新用ボタンAPI
     public function post_update_comment($id)
     {
         $comment = Input::post('comment');

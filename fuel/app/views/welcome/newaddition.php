@@ -21,7 +21,7 @@
         <input type="submit" value="追加">
     </form>
 
-    <!-- ここでホームに戻ると同時に、追加した記事を更新したい-->
+    <!-- ここでホームに戻ると同時に、追加した記事を更新する-->
     <form action="/home/back">
 		<button>戻る</button>
 	</form>

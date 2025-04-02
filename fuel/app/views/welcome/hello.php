@@ -35,22 +35,27 @@
 </head>
 <body>
 	<h1>アプリ開発</h1>
+	<!--新規追加ボタン -->
 	<form action="newaddition.php" method="POST" align="right">
 		<button>新規追加</button>
 	</form>
 	<br>
 	
+	<!-- タブ見出し -->
 	<p id="tabcontrol">
 		<a href="#webpage">記事</a>
 		<a href="#paper">論文</a>
 		<a href="#tool">ツール</a>
 	</p>
+
 	<!-- タブの中身。ここに新規追加していきたい -->
 	<div id="tabbody">
+		<!-- webpageタブ中身 -->
 		<div id="webpage">
 			<ol>
 				<?php foreach ($webpage_lists as $webpage_list): ?>
 					<li>
+						<!-- id, URLを共にバインド -->
 						<a href="#" class="tracked-link"
 							data-id="<?php echo $webpage_list['id']; ?>"
 							data-url="<?php echo $webpage_list['url']; ?>">
@@ -62,6 +67,7 @@
 				<?php endforeach; ?>
 			</ol>
 		</div>
+		<!-- webpageタブ中身終了、以降論文・ツールも同様 -->
 		<div id="paper">
 			<ol>
 				<?php foreach ($paper_lists as $paper_list): ?>

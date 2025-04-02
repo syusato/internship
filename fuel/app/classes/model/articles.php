@@ -5,6 +5,8 @@ class Articles extends \Model
 {
 
 	// Read
+	
+	//webpageのみを抽出
 	public static function select_web()
 	{
 
@@ -18,6 +20,7 @@ class Articles extends \Model
 
 	}
 
+	//paperのみを抽出
 	public static function select_paper()
 	{
 
@@ -31,6 +34,7 @@ class Articles extends \Model
 
 	}
 
+	//toolのみを抽出
 	public static function select_tool()
 	{
 
@@ -44,6 +48,7 @@ class Articles extends \Model
 
 	}
 
+	//指定したidを取り出す
 	public static function select_check($id)
 	{
 		$data = \DB::select('*')

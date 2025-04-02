@@ -17,6 +17,7 @@
     <h2>リンク　：<?php print_r($for_check[0]['url']); ?> </h2>
     <div>
         <h2>コメント：<input type="text" data-bind="value: comment"></h2><br>
+        <!--更新ボタンに data-bind を追加-->
         <button data-bind="click: updateComment">コメント更新（非同期）</button>
     </div>
     <br>
@@ -31,14 +32,15 @@
 
     <!-- 削除ボタンに data-bind を追加 -->
     <button data-bind="click: deleteItem">削除（非同期）</button>
-    <!-- ViewModel -->
+    <!-- 更新・削除どちらも合わせたViewModel -->
     <script>
     function ViewModel() {
         var self = this;
 
         self.id = <?php echo json_encode($id); ?>;
         self.comment = ko.observable(<?php echo json_encode($for_check[0]['comment']); ?>);
-
+        
+        //更新ボタン部分
         self.updateComment = function () {
             $.ajax({
                 url: "/api/detail/update_comment/" + self.id,
@@ -53,6 +55,7 @@
             });
         };
 
+        //削除ボタン部分
         self.deleteItem = function () {
             if (!confirm("本当に削除しますか？")) return;
 
@@ -69,7 +72,6 @@
             });
         };
     }
-
 
     ko.applyBindings(new ViewModel());
     </script>
