@@ -66,8 +66,12 @@
 			<ol>
 				<?php foreach ($paper_lists as $paper_list): ?>
 					<li>
-						<a href="<?php echo $paper_list['url']?>" target="_blank"><?php echo $paper_list['title']?></a>
-						<a href=" <?php echo \Uri::base();?>detail/check/<?php echo $paper_list['type']?>/<?php echo $paper_list['id'] ?>">詳細</a>
+						<a href="#" class="tracked-link"
+							data-id="<?php echo $paper_list['id']; ?>"
+							data-url="<?php echo $paper_list['url']; ?>">
+							<?php echo $paper_list['title']; ?>
+						</a>
+						<a href=" <?php echo \Uri::base();?>detail/check/<?php echo $paper_list['id'] ?>">詳細</a>
 					</li>
 				<?php endforeach; ?>
 			</ol>
@@ -76,8 +80,11 @@
 			<ol>
 				<?php foreach ($tool_lists as $tool_list): ?>
 					<li>
-						<a href="<?php echo $tool_list['url']?>" target="_blank"><?php echo $tool_list['title']?></a>
-						<a href=" <?php echo \Uri::base();?>detail/check/<?php echo $tool_list['type']?>/<?php echo $tool_list['id'] ?>">詳細</a>
+						<a href="#" class="tracked-link"
+							data-id="<?php echo $tool_list['id']; ?>"
+							data-url="<?php echo $tool_list['url']; ?>">
+							<?php echo $tool_list['title']; ?>
+						</a><a href=" <?php echo \Uri::base();?>detail/check/<?php echo $tool_list['id'] ?>">詳細</a>
 					</li>
 				<?php endforeach; ?>
 			</ol>
