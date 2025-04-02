@@ -1,7 +1,7 @@
 <?php
 use \Model\Articles;
 
-class Controller_Pages extends Controller
+class Controller_Pages extends Controller_base
 {
     public function action_view($page = null, $id)
     {

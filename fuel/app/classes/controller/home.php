@@ -1,7 +1,7 @@
 <?php
 use \Model\Articles;
 
-class Controller_Home extends Controller
+class Controller_Home extends Controller_Base
 {
     //初期画面
     public function action_index()

@@ -1,7 +1,7 @@
 <?php
 use \Model\Articles;
 
-class Controller_Detail extends Controller
+class Controller_Detail extends Controller_Base
 {
     public function action_check($id)
     {
