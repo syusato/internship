@@ -6,6 +6,9 @@ class Controller_Articles extends Controller
     //データの挿入
     public function action_insert()
     {
+        // review: must
+        // モデルの中で\Input::post('title')を使っていますが、コントローラーで取得し、モデルの引数としてデータを渡すようにしましょう
+        // データの流れが、view -> controller -> model となるべきですが、現状はview -> model となっています
         Articles::insert();
 
         return Response::redirect("home/index");

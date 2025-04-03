@@ -6,6 +6,8 @@ class Controller_Detail extends Controller_Base
     //read
     public function action_check($id)
     {
+        // review: nits
+        // 配列はarray()以外に[]で宣言することもできます。ネストが深くなった時にこちらの方が可読性が高いので、こちらを使ってみましょう。
         $data = array();
         $data['id'] = $id;
 

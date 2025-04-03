@@ -9,7 +9,8 @@ class Articles extends \Model
 	//webpageのみを抽出
 	public static function select_web()
 	{
-
+		// review: comment
+		// *を使わず引数無しにしても全てのデータを取得できます
 		$webpage = \DB::select('*')
 		->from('articles')
 		->where('type', '=', 'webpage')
@@ -66,6 +67,8 @@ class Articles extends \Model
 		// 現在の日時を取得
 		$current_date = \Date::forge()->format('%Y-%m-%d %H:%M:%S');
         
+		// review: comment
+		// insertやupdateなどは返り値を持っているので、どんな値が返ってくるか調べてみましょう
 		// データの挿入
 		\DB::insert('articles')->set(array(
 			'title' => \Input::post('title'),
@@ -105,6 +108,8 @@ class Articles extends \Model
 	//delete
 	public static function delete($id)
 	{
+		// review: comment
+		// 論理削除と物理削除というのがあるので調べてみましょう
 		$result = \DB::delete('articles')
 			->where('id', '=', $id)
 			->execute();
