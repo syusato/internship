@@ -1,9 +1,6 @@
 <?php
 namespace Model;
 
-// fuel/app/classes/model/articles.php
-namespace Model;
-
 class Articles extends \Model
 {
 
@@ -16,6 +13,7 @@ class Articles extends \Model
 		$webpage = \DB::select()
 		->from('articles')
 		->where('type', '=', 'webpage')
+		->where('user_id' , '=','1')//ユーザID参照
 		->execute()
 		->as_array();
 
@@ -30,6 +28,7 @@ class Articles extends \Model
 		$paper = \DB::select()
 		->from('articles')
 		->where('type', '=', 'paper')
+		->where('user_id' , '=','1')//ユーザID参照
 		->execute()
 		->as_array();
 
@@ -44,6 +43,7 @@ class Articles extends \Model
 		$tool = \DB::select()
 		->from('articles')
 		->where('type', '=', 'tool')
+		->where('user_id' , '=','1')//ユーザID参照
 		->execute()
 		->as_array();
 
@@ -57,6 +57,7 @@ class Articles extends \Model
 		$data = \DB::select()
 		->from('articles')
 		->where('id', '=', $id)
+		->where('user_id' , '=','1')//ユーザID参照
 		->execute()
 		->as_array();
 
