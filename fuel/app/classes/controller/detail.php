@@ -13,26 +13,4 @@ class Controller_Detail extends Controller_Base
 
         return Response::forge(View::forge('detail/check', $data));
     }
-
-    //update
-    public function action_update($id)
-    {
-        $data = [];
-        $data['id'] = $id;
-
-        $data['for_update'] = Articles::select_check($id);
-
-        return Response::forge(View::forge('detail/update', $data));
-    }
-
-    //delete
-    public function action_delete($id)
-    {
-        $data = [];
-        $data['id'] = $id;
-
-        $data['for_delete'] = Articles::select_check($id);
-
-        return Response::forge(View::forge('detail/delete', $data));
-    }
 }
