@@ -1,6 +1,9 @@
 <?php
 namespace Model;
 
+// fuel/app/classes/model/articles.php
+namespace Model;
+
 class Articles extends \Model
 {
 
@@ -10,7 +13,7 @@ class Articles extends \Model
 	public static function select_web()
 	{
 
-		$webpage = \DB::select('*')
+		$webpage = \DB::select()
 		->from('articles')
 		->where('type', '=', 'webpage')
 		->execute()
@@ -24,7 +27,7 @@ class Articles extends \Model
 	public static function select_paper()
 	{
 
-		$paper = \DB::select('*')
+		$paper = \DB::select()
 		->from('articles')
 		->where('type', '=', 'paper')
 		->execute()
@@ -38,7 +41,7 @@ class Articles extends \Model
 	public static function select_tool()
 	{
 
-		$tool = \DB::select('*')
+		$tool = \DB::select()
 		->from('articles')
 		->where('type', '=', 'tool')
 		->execute()
@@ -51,7 +54,7 @@ class Articles extends \Model
 	//指定したidを取り出す
 	public static function select_check($id)
 	{
-		$data = \DB::select('*')
+		$data = \DB::select()
 		->from('articles')
 		->where('id', '=', $id)
 		->execute()
@@ -60,55 +63,29 @@ class Articles extends \Model
 		return $data;
 	}
 
-	// Create
-	public static function insert()
-	{
-		// 現在の日時を取得
-		$current_date = \Date::forge()->format('%Y-%m-%d %H:%M:%S');
-        
-		// データの挿入
-		\DB::insert('articles')->set(array(
-			'title' => \Input::post('title'),
-			'url' => \Input::post('url'),
-			'comment' => \Input::post('comment'),
-			'type' => \Input::post('type'),
-			'insert_date' => $current_date,
-			'update_date' => $current_date,
-			'last_click' => $current_date
-		))->execute();
+    public static function insert($title, $url, $comment, $type)
+    {
+        $now = \Date::forge()->format('%Y-%m-%d %H:%M:%S');
+        return \DB::insert('articles')->set(array(
+            'title' => $title,
+            'url' => $url,
+            'comment' => $comment,
+			'type' => $type,
+            'insert_date' => $now,
+            'update_date' => $now,
+        ))->execute();
+    }
 
-		return;
-	}
+    public static function delete_by_id($id)
+    {
+        return \DB::delete('articles')->where('id', '=', $id)->execute();
+    }
 
-	//update
-	public static function update($id)
-	{
-		$current_date = \Date::forge()->format('%Y-%m-%d %H:%M:%S');
-
-		\DB::update('articles')
-		->set(array(
-			'title' => \Input::post('title'),
-			'url' => \Input::post('url'),
-			'comment' => \Input::post('comment'),
-			//'type' => \Input::post('type'),
-			//'insert_date' => $current_date,
-			'update_date' => $current_date
-			//'last_click' => $current_date
-
-		))
-		->where('id', '=', $id)
-		->execute();
-
-		return;
-	}
-
-	//delete
-	public static function delete($id)
-	{
-		$result = \DB::delete('articles')
-			->where('id', '=', $id)
-			->execute();
-
-		return $result > 0;
-	}
+    public static function update_comment($id, $comment)
+    {
+        return \DB::update('articles')->set([
+            'comment' => $comment,
+            'update_date' => \Date::forge()->format('%Y-%m-%d %H:%M:%S')
+        ])->where('id', '=', $id)->execute();
+    }
 }

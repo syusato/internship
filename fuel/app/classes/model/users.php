@@ -3,90 +3,23 @@ namespace Model;
 
 class Users extends \Model
 {
-   
-    // ユーザー情報取得
-    public static function select($id)
+    public static function create($username, $password, $email)
     {
-        $result = \DB::select('*')
-        ->from('users')
-        ->where('id', '=', $id)
-        ->execute()
-        ->as_array();
-
-        return $result;
+        return \Auth::create_user($username, $password, $email);
     }
 
-
-    // 新規登録
-    public static function insert()
+    public static function remove($user_id)
     {
-        $username = \Input::post('username');
-        $password = \Input::post('password');
-        $email = \Input::post('email');
-
-        try {
-            $user_id = \Auth::create_user($username, $password, $email);
-            \Session::set_flash('success', 'ユーザー登録成功！');
-            \Response::redirect('login/index');
-        } catch (SimpleUserUpdateException $e) {
-            \Session::set_flash('error', 'ユーザー作成エラー: ' . $e->getMessage());
-            \Response::redirect('login/newaddition');
+        $user = \Auth::get_user_id($user_id);
+        if ($user) {
+            return \Auth::delete_user($user_id);
         }
-
-        $result = \DB::select('*')
-        ->from('users')
-        ->where('username', '=', $username)
-        ->where('password', '=', $password)
-        ->where('email', '=', $email)
-        ->execute()
-        ->as_array();
-
-        return $result;
+        throw new \Exception('ユーザーが存在しません');
     }
 
-
-    // ログイン
-    public static function login()
+    public static function exists($username)
     {
-        $username = Input::post('username');
-        $password = Input::post('password');
-
-        $result = DB::select('*')
-        ->from('users')
-        ->where('username', '=', $username)
-        ->where('password', '=', $password)
-        ->execute()
-        ->as_array();
-
-        return $result;
-  }
-
-
-    // 更新
-    public static function update($id)
-    {
-        DB::update('users')
-        ->set(array(
-        'username' => Input::post('username'),
-        'password' => Input::post('password'),
-        'email' => Input::post('email')
-        ))
-        ->where('id', '=', $id)
-        ->execute();
-
-        return;
-  }
-
-
-    // 削除
-    public static function delete($id)
-    {
-        DB::delete('users')
-        ->where('id', '=', $id)
-        ->execute();
-
-        return;
+        return (bool) \DB::select()->from('users')->where('username', '=', $username)->execute()->count();
     }
 
-    
 }

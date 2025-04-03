@@ -12,7 +12,7 @@
     <h1>新しいリンクを登録</h1>
     <form method = "POST" action = "/articles/insert">
         タイトル：<input type="text" name="title"><br>
-        URL：<input type="text" name="url"><br>
+        URL：<input type="url" name="url"><br>
         コメント：<input type="text" name="comment"><br>
         
         <input type="radio" name="type" value="webpage"checked>記事<br>

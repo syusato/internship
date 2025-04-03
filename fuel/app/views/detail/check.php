@@ -13,16 +13,16 @@
 <body>
     <h3> details</h3>
 
-    <h1>タイトル：<?php print_r($for_check[0]['title']); ?> </h1>
-    <h2>リンク　：<?php print_r($for_check[0]['url']); ?> </h2>
+    <h1>タイトル：<?php echo $for_check[0]['title']; ?> </h1>
+    <h2>リンク　：<?php echo $for_check[0]['url']; ?> </h2>
     <div>
         <h2>コメント：<input type="text" data-bind="value: comment"></h2><br>
         <!--更新ボタンに data-bind を追加-->
         <button data-bind="click: updateComment">コメント更新（非同期）</button>
     </div>
     <br>
-    <h3>追加日　：<?php print_r($for_check[0]['insert_date']); ?> </h3>
-    <h3>最終閲覧：<?php print_r($for_check[0]['update_date']); ?> </h3>
+    <h3>追加日　：<?php echo $for_check[0]['insert_date']; ?> </h3>
+    <h3>最終閲覧：<?php echo $for_check[0]['update_date']; ?> </h3>
     <br>
 
     <form action="/home/back">

@@ -7,7 +7,7 @@ class Controller_Api_Detail extends Controller_Rest
     //削除ボタン用API
     public function delete_delete($id)
     {
-        $success = Articles::delete($id);
+        $success = Articles::delete_by_id($id);
 
         if ($success) {
             return $this->response(['status' => 'success']);

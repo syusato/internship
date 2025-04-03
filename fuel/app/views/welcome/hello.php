@@ -34,6 +34,14 @@
 	</style>
 </head>
 <body>
+
+    <!--ログイン成功フラッシュメッセージ -->
+    <?php if (Session::get_flash('success')): ?>
+        <div class="success" style="color:green;">
+            <p><?= Session::get_flash('success') ?></p>
+        </div>
+    <?php endif; ?>
+
 	<h1>アプリ開発</h1>
 	<!--新規追加ボタン -->
 	<form action="newaddition.php" method="POST" align="right">
@@ -89,8 +97,8 @@
 						<a href="#" class="tracked-link"
 							data-id="<?php echo $tool_list['id']; ?>"
 							data-url="<?php echo $tool_list['url']; ?>">
-							<?php echo $tool_list['title']; ?>
-						</a><a href=" <?php echo \Uri::base();?>detail/check/<?php echo $tool_list['id'] ?>">詳細</a>
+							<?php echo $tool_list['title']; ?></a>
+						<a href=" <?php echo \Uri::base();?>detail/check/<?php echo $tool_list['id'] ?>">詳細</a>
 					</li>
 				<?php endforeach; ?>
 			</ol>
