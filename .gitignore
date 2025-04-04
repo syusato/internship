@@ -9,6 +9,11 @@
 build
 .idea
 nbproject/
+.vscode/
+__pycache__/
+*.pyc
+venv/
+
 
 # hidden files created by Windows
 Thumbs.db

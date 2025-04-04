@@ -1,7 +1,7 @@
 <?php
 use \Model\Articles;
 
-class Controller_Articles extends Controller
+class Controller_Articles extends Controller_Base
 {
     //データの挿入
 

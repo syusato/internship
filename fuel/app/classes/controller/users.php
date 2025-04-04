@@ -1,7 +1,7 @@
 <?php
 use \Model\Users;
 
-class Controller_Users extends Controller
+class Controller_Users extends Controller_Base
 {
     public function action_insert()
     {
